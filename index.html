@@ -121,8 +121,9 @@
             </div>
             <div id="community-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             </div>
-            <div class="text-center mt-6">
+            <div class="text-center mt-6 flex justify-center space-x-4 space-x-reverse">
                 <button id="community-load-more-btn" class="hidden px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-indigo-100 text-indigo-600 transition-colors duration-200 text-base">טען עוד</button>
+                <button id="community-collapse-btn" class="hidden px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-indigo-100 text-indigo-600 transition-colors duration-200 text-base">צמצם</button>
             </div>
         </section>
 
@@ -137,8 +138,9 @@
             </div>
             <div id="resources-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             </div>
-            <div class="text-center mt-6">
+            <div class="text-center mt-6 flex justify-center space-x-4 space-x-reverse">
                 <button id="resources-load-more-btn" class="hidden px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-teal-100 text-teal-600 transition-colors duration-200 text-base">טען עוד</button>
+                <button id="resources-collapse-btn" class="hidden px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-teal-100 text-teal-600 transition-colors duration-200 text-base">צמצם</button>
             </div>
         </section>
 
@@ -332,11 +334,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return score;
     }
 
-    function setupFilterAndLoadMore(containerId, data, buttonClass, searchInputId, loadMoreBtnId) {
+    function setupFilterAndLoadMore(containerId, data, buttonClass, searchInputId, loadMoreBtnId, collapseBtnId) {
         const container = document.getElementById(containerId);
         const buttons = document.querySelectorAll(`.${buttonClass}`);
         const searchInput = document.getElementById(searchInputId);
         const loadMoreBtn = document.getElementById(loadMoreBtnId);
+        const collapseBtn = document.getElementById(collapseBtnId); // Get the new collapse button
 
         let currentFilter = 'all';
         let currentLimit = 6; // Initial limit for display
@@ -366,6 +369,13 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 loadMoreBtn.classList.add('hidden');
             }
+
+            // Show/hide collapse button
+            if (filteredData.length > 6 && currentLimit >= filteredData.length) {
+                collapseBtn.classList.remove('hidden');
+            } else {
+                collapseBtn.classList.add('hidden');
+            }
         }
 
         buttons.forEach(button => {
@@ -393,12 +403,18 @@ document.addEventListener('DOMContentLoaded', () => {
             updateDisplay();
         });
 
+        // Event listener for the new collapse button
+        collapseBtn.addEventListener('click', () => {
+            currentLimit = 6; // Reset to initial 6 items
+            updateDisplay();
+        });
+
         // Initial display
         updateDisplay();
     }
 
-    setupFilterAndLoadMore('community-container', communityData, 'community-filter-btn', 'community-search', 'community-load-more-btn');
-    setupFilterAndLoadMore('resources-container', resourcesData, 'resources-filter-btn', 'resources-search', 'resources-load-more-btn');
+    setupFilterAndLoadMore('community-container', communityData, 'community-filter-btn', 'community-search', 'community-load-more-btn', 'community-collapse-btn');
+    setupFilterAndLoadMore('resources-container', resourcesData, 'resources-filter-btn', 'resources-search', 'resources-load-more-btn', 'resources-collapse-btn');
 
 
     window.toggleDetails = function(element) {
