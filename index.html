@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>שער הכניסה לעולם משחקי התפקידים בישראל</title>
+    <!-- Meta Tags for SEO and Social Media -->
+    <meta name="description" content="מדריך מקיף למתחילים בעולם משחקי התפקידים בישראל: מה זה משחקי תפקידים, שיטות משחק, קהילות, כנסים, עסקים וחוגים. כל מה שצריך כדי להתחיל את ההרפתקה שלכם.">
+    <meta name="keywords" content="rrpg, ראובן צירל מנדלוביץ', ראובן מנדלוביץ', משחקי תפקידים למען הקהילה, RRPG.TOP, פלאים, מבוכים ודרקונים, חרבות וכשפים, פאת'פיינדר, עולמות פראיים, פאת'פיינדר פראי, דרקוניקון, אייקון, משחקי תפקידים, RPG, לארפ, D&D, מבוכים ודרקונים, חרבות וכשפים, פאת'פיינדר, פלאים, קהילת RPG ישראל, כנסים, חוגים, פריק, הפונדק, העמותה למשחקי תפקידים, שער הרפתקה">
+    <meta name="author" content="ראובן צירל-מנדלוביץ'">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="שער הכניסה לעולם משחקי התפקידים בישראל">
+    <meta property="og:description" content="מדריך מקיף למתחילים בעולם משחקי התפקידים בישראל: מה זה משחקי תפקידים, שיטות משחק, קהילות, כנסים, עסקים וחוגים. כל מה שצריך כדי להתחיל את ההרפתקה שלכם.">
+    <meta property="og:url" content="https://www.rrpg.top">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="he_IL">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="שער הכניסה לעולם משחקי התפקידים בישראל">
+    <meta name="twitter:description" content="מדריך מקיף למתחילים בעולם משחקי התפקידים בישראל: מה זה משחקי תפקידים, שיטות משחק, קהילות, כנסים, עסקים וחוגים. כל מה שצריך כדי להתחיל את ההרפתקה שלכם.">
     <!-- Chosen Palette: Warm Parchment -->
     <!-- Application Structure Plan: The SPA is designed as a task-oriented, non-linear guide for newcomers. Instead of a linear report, it uses a top navigation bar to allow users to jump to sections that answer their immediate questions (What is it? How do I start? Who is the community? Where do I buy things?). This structure facilitates exploration and quick access to relevant information. Key sections like "Game Systems" and "Community" use interactive, filterable card-based layouts to present dense information in a digestible, user-controlled manner, improving usability over a static document. -->
     <!-- Visualization & Content Choices: 
@@ -424,8 +437,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const subject = "פנייה בנושא לאתר שער הרפתקה";
         const recipient = "gate@rrpg.top";
         const body = emailBodyTextarea.value;
-        const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        window.location.href = mailtoLink;
+        let emailLink = '';
+
+        if (currentContactPlatform === 'gmail') {
+            emailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(recipient)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        } else if (currentContactPlatform === 'outlook') {
+            emailLink = `https://outlook.live.com/mail/0/deeplink/compose?to=${encodeURIComponent(recipient)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        } else { // Fallback for 'other' or if something goes wrong
+            emailLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+        window.open(emailLink, '_blank');
     });
 
     // Initialize the contact form on page load
