@@ -45,6 +45,34 @@
         .chart-container { position: relative; width: 100%; max-width: 700px; margin-left: auto; margin-right: auto; height: 350px; max-height: 400px; }
         @media (min-width: 768px) { .chart-container { height: 400px; } }
         .contact-btn.active { background-color: #8b5cf6; color: white; } /* Purple for active contact button */
+
+        /* Custom Tooltip for Apocalypse Engine */
+        .apocalypse-engine-tooltip {
+            position: fixed; /* Changed to fixed to avoid clipping by any parent */
+            background-color: #4a5568; /* stone-700 equivalent */
+            color: white;
+            padding: 0.75rem; /* p-3 */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            z-index: 9999; /* Very high z-index to ensure it's on top */
+            width: 20rem; /* w-64 */
+            text-align: right; /* RTL support */
+            pointer-events: none; /* Allows clicks to pass through to elements beneath */
+            display: none; /* Hidden by default */
+            /* Removed opacity and visibility transitions for instant pop */
+        }
+
+        .apocalypse-engine-tooltip-arrow {
+            position: absolute;
+            bottom: -8px; /* Half of border-width to make it touch the tooltip */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid #4a5568; /* Match tooltip background */
+        }
     </style>
 </head>
 <body class="bg-amber-50 text-stone-800">
@@ -54,20 +82,20 @@
             <div class="flex justify-between items-center">
                 <h1 class="text-2xl md:text-3xl font-bold text-indigo-600">שער להרפתקה ⚔️</h1>
                 <div class="hidden md:flex space-x-reverse space-x-8">
-                    <a href="#intro" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">מה זה?</a>
-                    <a href="#systems" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">בחירת שיטת משחק?</a>
+                    <a href="#intro" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">בואו נתחיל</a>
+                    <a href="#systems" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">בחירת שיטת משחק</a>
                     <a href="#community" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">הקהילה</a>
                     <a href="#resources" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">איפה קונים ומשחקים?</a>
-                    <a href="#closest-event" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">הכנס הקרוב ביותר</a>
+                    <a href="#closest-event" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">מתי הכנס הבא?</a>
                     <a href="#contact" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">צרו קשר</a>
                 </div>
                 <div class="md:hidden">
                     <select id="mobile-nav" class="bg-white border border-stone-300 rounded-md p-2 text-base text-stone-700">
-                        <option value="#intro">מה זה?</option>
+                        <option value="#intro">בואו נתחיל</option>
                         <option value="#systems">איך מתחילים?</option>
                         <option value="#community">הקהילה</option>
                         <option value="#resources">איפה קונים ומשחקים?</option>
-                        <option value="#closest-event">הכנס הקרוב ביותר</option>
+                        <option value="#closest-event">מתי הכנס הבא?</option>
                         <option value="#contact">צרו קשר</option>
                     </select>
                 </div>
@@ -96,16 +124,16 @@
 
         <section id="systems" class="mb-16 pt-10">
             <h2 class="text-4xl md:text-5xl font-bold text-center mb-2 text-stone-900">בחירת שיטת משחק</h2>
-            <p class="text-xl text-center text-stone-600 max-w-2xl mx-auto mb-8">כל הרפתקה צריכה חוקים. שיטת המשחק היא מערכת הכללים והעולם שבהם תפעלו. הנה כמה מהשיטות הפופולריות ביותר בישראל, שמתאימות במיוחד למתחילים.</p>
+            <p class="text-xl text-center text-stone-600 max-w-2xl mx-auto mb-8">כל הרפתקה צריכה חוקים. שיטת המשחק היא מערכת הכללים והעולם שבהם תפעלו. הנה ארבע מהשיטות הפופולריות ביותר בישראל, שמתאימות במיוחד למתחילים.</p>
+
+            <div id="systems-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            </div>
 
              <div class="mb-10">
                 <div class="chart-container">
                     <canvas id="systemsChart"></canvas>
                 </div>
                  <p class="text-base text-center text-stone-500 mt-2">תרשים זה מציג השוואה כללית של רמת מורכבות החוקים בין השיטות השונות, כדי לעזור לכם לבחור נקודת התחלה.</p>
-            </div>
-
-            <div id="systems-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
             </div>
         </section>
 
@@ -145,7 +173,7 @@
         </section>
 
         <section id="closest-event" class="pt-10 mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-8 text-stone-900">הכנס הקרוב ביותר</h2>
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-8 text-stone-900">מתי הכנס הבא?</h2>
             <div id="closest-event-container" class="max-w-md mx-auto">
                 <!-- Closest event card will be rendered here by JavaScript -->
             </div>
@@ -214,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         { 
             name: "פלאים: גיבורי המחר", 
-            description: "משחק תפקידים ישראלי המיועד לשחקנים מתבגרים או מתבגרים־לשעבר. פלאים מבוסס על המשחק המצליח Masks, בהשראת שיטת המשחק “מנוע האפוקליפסה” (ואנור/עולם המבוך). בפלאים אתם משחקים צוות של גיבורי־על צעירים המתמודדים עם קשיי הבגרות – ועם נבלי על! – בעיר בדיונית אותה יצרתם בעצמכם.",
+            description: `משחק תפקידים ישראלי המיועד לשחקנים מתבגרים או מתבגרים־לשעבר. פלאים מבוסס על המשחק המצליח Masks, בהשראת <span class="text-purple-600 font-semibold cursor-help apocalypse-engine-trigger" data-tooltip-content="מנוע משחק שעליו נבנות שיטות משחק תפקידים רבות, תוך שימור עקרונות בסיסיים משותפים. כל ההטלות נעשות עם שתי קוביות רגילות (2d6), ומדרגות הצלחה מאפשרות תוצאות מגוונות (כישלון, הצלחה חלקית, הצלחה מלאה). עם עידוד למהלכים ייחודיים, חשיבה יצירתית, ודגש על סיפור ולא קרב, נהפך המנוע לשיטה השנייה הנפוצה בעולם שהשיטות מתבססות עליה">מנוע האפוקליפסה</span> (ואנור/עולם המבוך). בפלאים אתם משחקים צוות של גיבורי־על צעירים המתמודדים עם קשיי הבגרות – ועם נבלי על! – בעיר בדיונית אותה יצרתם בעצמכם.`,
             why: "שיטה ישראלית מקורית, קלה ללמידה ומתאימה למי שמחפש חוויה ייחודית של גיבורי-על עם עומק רגשי.",
             complexity: 5,
             color: 'rgba(255, 165, 0, 0.7)', // Orange color
@@ -232,8 +260,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "לארפ ליברה", type: "event", description: "אירוע לארפ ותיק עם דגש על סיפור מתמשך ועולם עשיר בו השחקנים מעצבים את העלילה.", link: "https://libra.co.il/", month: 10, location: "פארק מקורות הירקון" },         // October
         { name: "כנס כרמיקון", type: "event", description: "כנס משחקי תפקידים ופנטזיה המתקיים בכרמיאל, עם דגש על קהילת הצפון.", link: "https://karmicon.roleplay.org.il/index.html", month: 12, location: "כרמיאל" }, // December
         { name: "כנס דורות", type: "event", description: "כנס שנתי למדע בדיוני, פנטזיה ומשחקי תפקידים, המציע מגוון פעילויות והרצאות.", link: "https://dorot-con.org.il/", month: 3, location: "משתנה" },       // March
-        { name: "שחקני תפקידים בישראל (פייסבוק)", type: "group", description: "הקבוצה הגדולה והפעילה ביותר לדיונים, שיתוף, ומציאת קבוצות משחק.", link: "https://www.facebook.com/share/g/1BATncAQvh/", month: 0 },
-        { name: "משחקי תפקידים בישראל (פייסבוק)", type: "group", description: "הקבוצה השנייה הגדולה והפעילה ביותר לדיונים, שיתוף, ומציאת קבוצות משחק.", link: "https://www.facebook.com/share/g/16e153ZhEJ/", month: 0 },
+        { name: "שחקני תפקידים בישראל (פייסבוק)", type: "group", description: "הקבוצה הגדולה והפעילה ביותר לדיונים, שיתוף, ומציאת קבוצות משחק.", link: "https://www.facebook.com/groups/roleplayersinisrael", month: 0 },
+        { name: "משחקי תפקידים בישראל (פייסבוק)", type: "group", description: "הקבוצה השנייה הגדולה והפעילה ביותר לדיונים, שיתוף, ומציאת קבוצות משחק.", link: "https://www.facebook.com/groups/rpginisrael", month: 0 },
         { name: "לארפ ישראל (פייסבוק)", type: "group", description: "הקבוצה המרכזית של קהילת הלארפ לדיונים, עדכונים על אירועים ותיאומים.", link: "https://www.facebook.com/groups/israelilarp", month: 0 },
         { name: "פורום חיפוש שחקנים בפונדק", type: "group", description: "לוח המודעות הוותיק והיעיל ביותר למציאת קבוצת משחק לפי אזור גיאוגרפי.", link: "https://www.pundak.co.il/forums/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%A9%D7%97%D7%A7%D7%A0%D7%99%D7%9D-%D7%9E%D7%A0%D7%97%D7%99%D7%9D-%D7%95%D7%A7%D7%91%D7%95%D7%A6%D7%95%D7%AA-%D7%9E%D7%A9%D7%97%D7%A7%D7%99-%D7%AA%D7%A4%D7%A7%D7%99%D7%93%D7%99%D7%9D.31/", month: 0 },
         { name: "רולפליירים בירושלים", type: "group", description: "קבוצת פייסבוק ייעודית לחיפוש קבוצות ואירועים באזור ירושלים.", link: "https://www.facebook.com/share/g/15fN96jBnU/", month: 0 },
@@ -255,6 +283,14 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "שער הדמיון", type: "kids", location: "אזור השרון", description: "חוגי משחקי תפקידים בקבוצות קטנות עם מנחים מנוסים, תוך דגש על פיתוח כישורים.", link: "https://dramaplay.co.il/" },
         { name: "MYDM", type: "kids", location: "שפלת יהודה", description: "חוגי משחקי תפקידים לילדים ונוער, דגש על פיתוח יצירתיות ומיומנויות חברתיות.", link: "https://www.facebook.com/MosheYaminDongeonMaster/" }
     ];
+
+    // Add a global tooltip element to the body
+    const globalTooltip = document.createElement('div');
+    globalTooltip.className = 'apocalypse-engine-tooltip';
+    globalTooltip.innerHTML = '<div class="apocalypse-engine-tooltip-arrow"></div><div id="apocalypse-tooltip-content" class="text-base"></div>';
+    document.body.appendChild(globalTooltip);
+    const tooltipContentDiv = document.getElementById('apocalypse-tooltip-content');
+
 
     const systemsContainer = document.getElementById('systems-container');
     systemsData.forEach(system => {
@@ -609,6 +645,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderClosestEvent();
+
+    // Select all elements that should trigger the tooltip
+    const tooltipTriggers = document.querySelectorAll('.apocalypse-engine-trigger');
+
+    tooltipTriggers.forEach(trigger => {
+        trigger.addEventListener('mouseenter', (event) => {
+            const content = trigger.dataset.tooltipContent;
+            tooltipContentDiv.innerHTML = content.split('. ').filter(s => s.trim() !== '').map(p => `<p>${p.trim()}.</p>`).join('');
+
+            globalTooltip.style.display = 'block'; // Make it visible immediately
+
+            const rect = trigger.getBoundingClientRect();
+            // Need to get dimensions *after* display block
+            const tooltipHeight = globalTooltip.offsetHeight;
+            const tooltipWidth = globalTooltip.offsetWidth;
+
+            // Position the tooltip
+            let leftPos = rect.left + rect.width / 2 - tooltipWidth / 2;
+            let topPos = rect.top - tooltipHeight - 10; // 10px above trigger
+
+            // Ensure it doesn't go off-screen horizontally
+            if (leftPos < 0) {
+                leftPos = 0;
+            }
+            if (leftPos + tooltipWidth > window.innerWidth) {
+                leftPos = window.innerWidth - tooltipWidth;
+            }
+
+            globalTooltip.style.left = `${leftPos}px`;
+            globalTooltip.style.top = `${topPos}px`;
+        });
+
+        trigger.addEventListener('mouseleave', () => {
+            globalTooltip.style.display = 'none'; // Hide immediately
+        });
+    });
 
 });
 </script>
