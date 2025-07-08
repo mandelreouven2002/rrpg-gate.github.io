@@ -251,8 +251,9 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const communityData = [
-        { name: "העמותה למשחקי תפקידים בישראל", type: "organization", description: "הגוף המרכזי לקידום התחביב. מארגנת כנסים (ביגור), תומכת ביוצרים ומפעילה את הוצאת 'גיבורים'.", link: "https://roleplay.org.il/", month: 0 },
+        { name: "העמותה למשחקי תפקידים בישראל", type: "organization", description: "הגוף המרכזי המוכר לקידום התחביב. מארגנת כנסים (ביגור לשעבר וכרמיקון), תומכת בפרויקטים, אירועים ויוצרים, ומפעילה את הוצאת 'גיבורים'.", link: "https://roleplay.org.il/", month: 0 },
         { name: "האגודה למד\"ב ופנטסיה", type: "organization", description: "שותפה בארגון כנסים מרכזיים כמו פסטיבל אייקון, ומקדמת את תרבות הז'אנר בישראל.", link: "https://www.sf-f.org.il/", month: 0 },
+        { name: "גלגול - משחקי תפקידים למען הקהילה", type: "organization", description: "משחקי תפקידים למען הקהילה מאת ראובן צירל-מנדלוביץ'. האתר מציע משחקים מקוריים, תרגומים נגישים ופעילויות שבהן ראובן מעורב.", link: "https://roleplay.org.il/", month: 0 },
         { name: "הפונדק", type: "organization", description: "הקהילה המקוונת הוותיקה והמובילה, המארגנת של כנס 'דרקוניקון'. מוציאה לאור משחקים בעברית.", link: "https://www.pundak.co.il/", month: 0 },
         { name: "לארפ גלדיאטור", type: "organization", description: "המרכז הישראלי למשחקי לארפ. מארגן אירועים בארץ ובחו\"ל ומהווה מוקד ידע וציוד.", link: "https://www.larp-g.com/", month: 0 },
         { name: "פסטיבל אייקון", type: "event", description: "אירוע הדגל השנתי של קהילת חובבי הז'אנר, עם מתחם ענק למשחקי תפקידים, דוכנים ועוד.", link: "https://www.icon.org.il/", month: 10, location: "תל אביב" }, // October
@@ -271,17 +272,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const resourcesData = [
         { name: "פריק (Freak)", type: "business", location: "תל אביב (דיזנגוף סנטר)", description: "חנות משחקים וקהילה בדיזנגוף-סנטר המציעה מגוון רחב של משחקי תפקידים, קלפים ולוח.", link: "https://www.freak-tlv.com/" },
-        { name: "DRIX חיפה", type: "business", location: "חיפה", description: "בית קפה למשחקים עם חדר משחקי תפקידים ייעודי וספריית משחקי לוח ענקית.", link: "https://www.drixhaifa.com/" },
-        { name: "Rooms & Realms", type: "business", location: "רחובות", description: "מציע חדר RPG ייעודי ומעוצב לחוויית משחק סוחפת.", link: "https://www.roomsandrealms.com/" },
+        { name: "DRIX דריקס חיפה", type: "business", location: "חיפה", description: "בית קפה למשחקים עם חדר משחקי תפקידים ייעודי וספריית משחקי לוח ענקית.", link: "https://www.drixhaifa.com/" },
+        { name: "Rooms & Realms", type: "business", location: "רחובות", description: " חדר משחקי התפקידים הראשון של ישראל, חדר ייעודי ומעוצב לחוויית משחק סוחפת.", link: "https://www.roomsandrealms.com/" },
         { name: "לארפ גלדיאטור (LARP Gladiator)", type: "business", location: "ישראל (מרכז)", description: "ארגון אירועי לארפ בישראל ובעולם וגם מקור לציוד ותחפושות לארפ.", link: "https://www.larp-g.com/" },
         { name: "הגובלין החכם (Wise Goblin)", type: "business", location: "ראשון לציון, הרצליה", description: "חדרי משחק מעוצבים עם מוזיקה, תאורה ומסך אינטראקטיבי, אלפי מיניאטורות ותפאורה, מנחים מקצועיים, שירותי הדפסת תלת מימד, חנות לציוד (מיניאטורות, קוביות, מפות, מגדלי קוביות).", link: "https://wisegoblin.com/" },
-        { name: "iNexus", type: "business", location: "ראשון לציון", description: "חנות המתמחה במוצרי משחקי תפקידים, משחקי קלפים ואביזרים.", link: "https://www.inexus.co.il/" },
+        { name: "נקסוס - מרכז חוגים והעשרה", type: "business", location: "ראשון לציון", description: "חנות המתמחה במוצרי משחקי תפקידים, משחקי קלפים ואביזרים.", link: "https://www.inexus.co.il/" },
         { name: "הממלכה", type: "business", location: "הוד השרון", description: "חנות משחקים וקהילה המציעה מגוון רחב של משחקי תפקידים, קלפים ולוח.", link: "https://thekingdom.co.il/" },
-        { name: "קרן השפע (Keren HaShefa)", type: "kids", location: "גוש דן", description: "יוצרת הרפתקאות משחקי תפקידים, מפעילה קייטנות דמיון, הפעלות לימי הולדת ולילדי עובדים.", link: "https://xn----8hc5aojohl.co.il/" },
-        { name: "שושנת המדבר (Shoshanat HaMidbar)", type: "kids", location: "צפון הארץ", description: "מפעילה חוגי העשרה במגוון רחב של שיטות בבתי ספר ומתנ\"סים.", link: "https://hashoshana.co.il/" },
+        { name: "קרן השפע", type: "kids", location: "גוש דן", description: "יוצרת הרפתקאות משחקי תפקידים, מפעילה קייטנות דמיון, הפעלות לימי הולדת ולילדי עובדים.", link: "https://xn----8hc5aojohl.co.il/" },
+        { name: "שושנת המדבר", type: "kids", location: "צפון הארץ", description: "מפעילה חוגי העשרה במגוון רחב של שיטות בבתי ספר ומתנ\"סים.", link: "https://hashoshana.co.il/" },
         { name: "הבקתה משחקי תפקידים", type: "kids", location: "קדימה", description: "מרכז חוגים וקהילה לילדים ונוער עם דגש על העצמה ומיומנויות חברתיות.", link: "https://www.habiktamt.com/" },
         { name: "שער הדמיון", type: "kids", location: "אזור השרון", description: "חוגי משחקי תפקידים בקבוצות קטנות עם מנחים מנוסים, תוך דגש על פיתוח כישורים.", link: "https://dramaplay.co.il/" },
-        { name: "MYDM", type: "kids", location: "שפלת יהודה", description: "חוגי משחקי תפקידים לילדים ונוער, דגש על פיתוח יצירתיות ומיומנויות חברתיות.", link: "https://www.facebook.com/MosheYaminDongeonMaster/" }
+        { name: "MYDM משה ימין מבוכים ודרקונים", type: "kids", location: "שפלת יהודה", description: "חוגי משחקי תפקידים לילדים ונוער, דגש על פיתוח יצירתיות ומיומנויות חברתיות.", link: "https://www.facebook.com/MosheYaminDongeonMaster/" }
     ];
 
     // Add a global tooltip element to the body
