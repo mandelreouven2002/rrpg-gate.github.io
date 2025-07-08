@@ -49,17 +49,17 @@
         /* Custom Tooltip for Apocalypse Engine */
         .apocalypse-engine-tooltip {
             position: fixed; /* Changed to fixed to avoid clipping by any parent */
-            background-color: #4a5568; /* stone-700 equivalent */
+            background-color: rgba(0, 0, 0, 0.85); /* Darker, more like Chart.js */
             color: white;
-            padding: 0.75rem; /* p-3 */
-            border-radius: 0.5rem; /* rounded-lg */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            padding: 0.5rem 0.75rem; /* Adjusted padding */
+            border-radius: 0.375rem; /* Adjusted border-radius */
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Slightly lighter shadow for tooltip */
             z-index: 9999; /* Very high z-index to ensure it's on top */
             width: 20rem; /* w-64 */
             text-align: right; /* RTL support */
             pointer-events: none; /* Allows clicks to pass through to elements beneath */
             display: none; /* Hidden by default */
-            /* Removed opacity and visibility transitions for instant pop */
+            font-family: 'Assistant', sans-serif; /* Ensure font is consistent */
         }
 
         .apocalypse-engine-tooltip-arrow {
@@ -71,7 +71,7 @@
             height: 0;
             border-left: 8px solid transparent;
             border-right: 8px solid transparent;
-            border-top: 8px solid #4a5568; /* Match tooltip background */
+            border-top: 8px solid rgba(0, 0, 0, 0.85); /* Match new tooltip background */
         }
     </style>
 </head>
@@ -110,6 +110,17 @@
             <p class="max-w-3xl mx-auto text-xl text-stone-600 mb-8">
                 מדריך זה הוא נקודת ההתחלה שלכם. כאן תגלו מהם משחקי תפקידים, תלמדו על שיטות המשחק המובילות ותמצאו את הקהילות, האירועים והחנויות שיעזרו לכם לצאת להרפתקה הראשונה שלכם.
             </p>
+            <!-- New introductory text block as a card, spanning full width -->
+            <div class="card bg-white p-6 rounded-lg shadow-lg border border-stone-200 text-right max-w-4xl mx-auto mb-8">
+                <h3 class="text-3xl font-bold mb-3 text-stone-900">ליתר ביטחון, מה זה בכלל משחקי תפקידים?</h3>
+                <p class="text-lg text-stone-600 mb-4">
+                    משחקי תפקידים הם פעילות חברתית שבה המשתתפים מגלמים דמויות בדיוניות בתוך עולם סיפור מסוים. כל שחקן בוחר דמות ומגיב לסיטואציות על פי אופייה, רצונותיה ויכולותיה. יש שיטה שמנחה את החוקים, ויש את "אדם האחראי" או המנחה שמוביל את העלילה.
+                </p>
+                <p class="text-lg text-stone-600">
+                    המטרה? ליצור יחד חוויות משותפות, לספר סיפור בלתי נשכח, לפתור תעלומות, ולפעמים גם פשוט לצחוק וליהנות ביחד.
+                </p>
+            </div>
+            <!-- End of new introductory text block -->
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <div class="card bg-white p-6 rounded-lg shadow-lg border border-stone-200 text-right">
                     <h3 class="text-3xl font-bold mb-3 text-indigo-700 flex items-center justify-start"><span class="text-4xl ml-3"></span>משחקי תפקידים שולחניים (TTRPG)</h3>
@@ -253,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const communityData = [
         { name: "העמותה למשחקי תפקידים בישראל", type: "organization", description: "הגוף המרכזי המוכר לקידום התחביב. מארגנת כנסים (ביגור לשעבר וכרמיקון), תומכת בפרויקטים, אירועים ויוצרים, ומפעילה את הוצאת 'גיבורים'.", link: "https://roleplay.org.il/", month: 0 },
         { name: "האגודה למד\"ב ופנטסיה", type: "organization", description: "שותפה בארגון כנסים מרכזיים כמו פסטיבל אייקון, ומקדמת את תרבות הז'אנר בישראל.", link: "https://www.sf-f.org.il/", month: 0 },
-        { name: "גלגול - משחקי תפקידים למען הקהילה", type: "organization", description: "משחקי תפקידים למען הקהילה מאת ראובן צירל-מנדלוביץ'. האתר מציע משחקים מקוריים, תרגומים נגישים ופעילויות שבהן ראובן מעורב.", link: "https://roleplay.org.il/", month: 0 },
+        { name: "גלגול - משחקי תפקידים למען הקהילה", type: "organization", description: "משחקי תפקידים למען הקהילה מאת ראובן צירל-מנדלוביץ'. האתר מציע משחקים מקוריים, תרגומים נגישים ופעילויות שבהן ראובן מעורב.", link: "https://rrpg.top/", month: 0 },
         { name: "הפונדק", type: "organization", description: "הקהילה המקוונת הוותיקה והמובילה, המארגנת של כנס 'דרקוניקון'. מוציאה לאור משחקים בעברית.", link: "https://www.pundak.co.il/", month: 0 },
         { name: "לארפ גלדיאטור", type: "organization", description: "המרכז הישראלי למשחקי לארפ. מארגן אירועים בארץ ובחו\"ל ומהווה מוקד ידע וציוד.", link: "https://www.larp-g.com/", month: 0 },
         { name: "פסטיבל אייקון", type: "event", description: "אירוע הדגל השנתי של קהילת חובבי הז'אנר, עם מתחם ענק למשחקי תפקידים, דוכנים ועוד.", link: "https://www.icon.org.il/", month: 10, location: "תל אביב" }, // October
@@ -282,7 +293,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "שושנת המדבר", type: "kids", location: "צפון הארץ", description: "מפעילה חוגי העשרה במגוון רחב של שיטות בבתי ספר ומתנ\"סים.", link: "https://hashoshana.co.il/" },
         { name: "הבקתה משחקי תפקידים", type: "kids", location: "קדימה", description: "מרכז חוגים וקהילה לילדים ונוער עם דגש על העצמה ומיומנויות חברתיות.", link: "https://www.habiktamt.com/" },
         { name: "שער הדמיון", type: "kids", location: "אזור השרון", description: "חוגי משחקי תפקידים בקבוצות קטנות עם מנחים מנוסים, תוך דגש על פיתוח כישורים.", link: "https://dramaplay.co.il/" },
-        { name: "MYDM משה ימין מבוכים ודרקונים", type: "kids", location: "שפלת יהודה", description: "חוגי משחקי תפקידים לילדים ונוער, דגש על פיתוח יצירתיות ומיומנויות חברתיות.", link: "https://www.facebook.com/MosheYaminDongeonMaster/" }
+        { name: "MYDM משה ימין מבוכים ודרקונים", type: "kids", location: "שפלת יהודה", description: "חוגי משחקי תפקידים לילדים ונוער, דגש על פיתוח יצירתיות ומיומנויות חברתיות.", link: "https://www.facebook.com/MosheYaminDongeonMaster/" },
+        { name: "טויסים (Toysim)", type: "business", location: "תל אביב (המלך ג'ורג' 74)", description: "חנות צעצועים וחפצים.", link: "https://toysim.co.il/" },
+        { name: "משחק ומחשבה", type: "business", location: "ירושלים (פועלי צדק 3)", description: "חנות צעצועים וציוד יצירה.", link: "https://easy.co.il/page/24615901" },
+        { name: "צעצועי אופק", type: "business", location: "באר שבע (שדרות יוהנה ז'בוטינסקי 30)", description: "מגוון צעצועים לילדים.", link: "https://easy.co.il/page/24918433" }
     ];
 
     // Add a global tooltip element to the body
