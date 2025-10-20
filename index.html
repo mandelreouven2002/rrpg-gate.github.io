@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -7,84 +8,63 @@
     <link rel="icon" type="image/x-icon" href="/rpg-game.png">
 
     <!-- Meta Tags for SEO and Social Media -->
-    <meta name="description" content="מדריך מקיף למתחילים בעולם משחקי התפקידים בישראל: מה זה משחקי תפקידים, שיטות משחק, קהילות, כנסים, עסקים וחוגים. כל מה שצריך כדי להתחיל את ההרפתקה שלכם.">
-    <meta name="keywords" content="rrpg, ראובן צירל מנדלוביץ', ראובן מנדלוביץ', משחקי תפקידים למען הקהילה, RRPG.TOP, פלאים, מבוכים ודרקונים, חרבות וכשפים, פאת'פיינדר, עולמות פראיים, פאת'פיינדר פראי, דרקוניקון, אייקון, משחקי תפקידים, RPG, לארפ, D&D, מבוכים ודרכונים, חרבות וכשפים, פאת'פיינדר, פלאים, קהילת RPG ישראל, כנסים, חוגים, פריק, הפונדק, העמותה למשחקי תפקידים, שער הרפתקה">
+    <meta name="description" content="המדריך המקיף למתחילים בעולם משחקי התפקידים בישראל: מה זה משחקי תפקידים, איך מתחילים, שיטות משחק, קהילות, כנסים וכל מה שצריך כדי לצאת להרפתקה.">
+    <meta name="keywords" content="משחקי תפקידים, איך להתחיל לשחק, מדריך למתחיל, מבוכים ודרקונים, פאת'פיינדר, חרבות וכשפים, קהילת RPG ישראל, כנס דרקוניקון, פסטיבל אייקון, למצוא קבוצת משחק, RPG, D&D">
     <meta name="author" content="ראובן צירל-מנדלוביץ'">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="שער להרפתקה - שער הכניסה לעולם משחקי התפקידים בישראל">
-    <meta property="og:description" content="מדריך מקיף למתחילים בעולם משחקי התפקידים בישראל: מה זה משחקי תפקידים, שיטות משחק, קהילות, כנסים, עסקים וחוגים. כל מה שצריך כדי להתחיל את ההרפתקה שלכם.">
+    <meta property="og:description" content="המדריך המקיף למתחילים בעולם משחקי התפקידים בישראל. כל מה שצריך כדי להתחיל את ההרפתקה שלכם.">
     <meta property="og:url" content="https://gate.rrpg.top">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="he_IL">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="שער הכניסה לעולם משחקי התפקידים בישראל">
-    <meta name="twitter:description" content="מדריך מקיף למתחילים בעולם משחקי התפקידים בישראל: מה זה משחקי תפקידים, שיטות משחק, קהילות, כנסים, עסקים וחוגים. כל מה שצריך כדי להתחיל את ההרפתקה שלכם.">
-    <!-- Chosen Palette: Warm Parchment -->
-    <!-- Application Structure Plan: The SPA is designed as a task-oriented, non-linear guide for newcomers. Instead of a linear report, it uses a top navigation bar to allow users to jump to sections that answer their immediate questions (What is it? How do I start? Who is the community? Where do I buy things?). This structure facilitates exploration and quick access to relevant information. Key sections like "Game Systems" and "Community" use interactive, filterable card-based layouts to present dense information in a digestible, user-controlled manner, improving usability over a static document. -->
-    <!-- Visualization & Content Choices: 
-        - Report Info: TTRPG vs LARP -> Goal: Inform/Compare -> Viz: Side-by-side flexbox cards with Unicode icons (🎲, 🎭). Interaction: Subtle hover effects. Justification: Quickly establishes the two main types of RPGs for a beginner. Method: HTML/Tailwind.
-        - Report Info: D&D, S&W, Pathfinder, Savage Worlds (now "פלאים") -> Goal: Compare/Inform -> Viz: Interactive cards and a Chart.js horizontal bar chart comparing complexity. Interaction: Clicking cards reveals details; chart provides a quick visual summary. Justification: Breaks down a complex choice into manageable pieces and offers both a quick visual heuristic (chart) and in-depth info (cards). Library: Chart.js.
-        - Report Info: Organizations, Events, Groups, Businesses -> Goal: Organize/Directory -> Viz: Filterable grid of cards. Interaction: Filter buttons to show/hide categories, and now "Show first 3" to limit displayed items. Justification: Allows users to easily find specific resources without scrolling through irrelevant information, and provides a quick overview option. Method: JS data arrays + Tailwind grid.
-        - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         body { font-family: 'Assistant', sans-serif; scroll-behavior: smooth; }
+        /* עשינו את אפקט ה-hover עדין יותר */
         .card { transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
         .nav-link { position: relative; overflow: hidden; }
         .nav-link::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background-color: #4f46e5; transition: all 0.3s ease-in-out; transform: translateX(-50%); }
         .nav-link:hover::after { width: 100%; }
-        .content-section { display: none; }
-        .content-section.active { display: block; }
-        .tab-btn.active { background-color: #4f46e5; color: white; }
         .details-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; }
         .chart-container { position: relative; width: 100%; max-width: 700px; margin-left: auto; margin-right: auto; height: 350px; max-height: 400px; }
         @media (min-width: 768px) { .chart-container { height: 400px; } }
-        .contact-btn.active { background-color: #8b5cf6; color: white; } /* Purple for active contact button */
-
-        /* CSS for the new background overlay */
-        #background-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Place it behind other content */
-            background-image: url('/rpg-bg.png'); /* Placeholder for RPG pattern */
-            background-repeat: repeat; /* Repeat the pattern */
-            opacity: 0.025; /* Adjust for desired transparency - the lower the more transparent*/
-            pointer-events: none; /* Allow clicks to pass through */
-        }
+        .contact-btn.active { background-color: #8b5cf6; color: white; }
+        #background-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-image: url('/rpg-bg.png'); background-repeat: repeat; opacity: 0.025; pointer-events: none; }
     </style>
 </head>
 
 <body class="bg-amber-50 text-stone-800">
-    <!-- New background overlay div -->
     <div id="background-overlay"></div>
 
     <header class="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3">
             <div class="flex justify-between items-center">
-                <h1 class="text-2xl md:text-3xl font-bold text-indigo-600"><a href="https://gate.rrpg.top">שער להרפתקה ⚔️ </a></h1>
+                <h1 class="text-2xl md:text-3xl font-bold text-indigo-600"><a href="#">שער להרפתקה ⚔️</a></h1>
                 <div class="hidden md:flex space-x-reverse space-x-8">
-                    <a href="#intro" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">בואו נתחיל</a>
-                    <a href="#systems" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">בחירת שיטת משחק</a>
+                    <a href="#intro-what-is" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">מה זה?</a>
+                    <a href="#getting-started" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">מה צריך?</a>
+                    <a href="#systems" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">בחירת שיטה</a>
+                    <a href="#find-group" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">איך מוצאים קבוצה?</a>
                     <a href="#community" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">הקהילה</a>
-                    <a href="#resources" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">איפה קונים ומשחקים?</a>
-                    <a href="#closest-event" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">מתי הכנס הבא?</a>
+                    <a href="#resources" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">חנויות וחוגים</a>
                     <a href="#contact" class="nav-link text-lg text-stone-600 hover:text-indigo-600 font-semibold pb-1">צרו קשר</a>
                 </div>
                 <div class="md:hidden">
                     <select id="mobile-nav" class="bg-white border border-stone-300 rounded-md p-2 text-base text-stone-700">
-                        <option value="#intro">בואו נתחיל</option>
-                        <option value="#systems">בחירת שיטת משחק</option>
+                        <option value="#intro-what-is">מה זה?</option>
+                        <option value="#getting-started">מה צריך?</option>
+                        <option value="#systems">בחירת שיטה</option>
+                        <option value="#find-group">איך מוצאים קבוצה?</option>
                         <option value="#community">הקהילה</option>
-                        <option value="#resources">איפה קונים ומשחקים?</option>
-                        <option value="#closest-event">מתי הכנס הבא?</option>
+                        <option value="#resources">חנויות וחוגים</option>
                         <option value="#contact">צרו קשר</option>
                     </select>
                 </div>
@@ -93,61 +73,158 @@
     </header>
 
     <main class="container mx-auto p-4 md:p-8">
-        
+
+        <!-- HERO SECTION - A GUIDED PATH -->
         <section id="intro" class="text-center mb-16 pt-10">
-            <h2 class="text-5xl md:text-6xl font-bold mb-4 text-stone-900">ברוכים הבאים לעולם משחקי התפקידים</h2>
-            <p class="max-w-3xl mx-auto text-xl text-stone-600 mb-8">
-                מדריך זה הוא נקודת ההתחלה שלכם. כאן תגלו מהם משחקי תפקידים, תלמדו על שיטות המשחק המובילות ותמצאו את הקהילות, האירועים והחנויות שיעזרו לכם לצאת להרפתקה הראשונה שלכם.
+            <h2 class="text-5xl md:text-6xl font-bold mb-4 text-stone-900">יוצאים להרפתקה הראשונה שלכם</h2>
+            <p class="max-w-3xl mx-auto text-xl text-stone-600 mb-12">
+                עולם משחקי התפקידים מחכה לכם. הנה הדרך הפשוטה והמודרכת להתחיל:
             </p>
-            <!-- New introductory text block as a card, spanning full width -->
-            <div class="card bg-white p-6 rounded-lg shadow-lg border border-stone-200 text-right max-w-4xl mx-auto mb-8">
-                <h3 class="text-3xl font-bold mb-3 text-stone-900">ליתר ביטחון, מה זה בכלל משחקי תפקידים?</h3>
-                <p class="text-lg text-stone-600 mb-4">
-                    משחקי תפקידים הם פעילות חברתית שבה המשתתפים מגלמים דמויות בדיוניות בתוך עולם סיפור מסוים. כל שחקן בוחר דמות ומגיב לסיטואציות על פי אופייה, רצונותיה ויכולותיה. יש שיטה שמנחה את החוקים, ויש את "אדם האחראי" או המנחה שמוביל את העלילה.
-                </p>
-                <p class="text-lg text-stone-600">
-                    המטרה? ליצור יחד חוויות משותפות, לספר סיפור בלתי נשכח, לפתור תעלומות, ולפעמים גם פשוט לצחוק וליהנות ביחד.
-                </p>
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <a href="#intro-what-is" class="card bg-white p-6 rounded-lg shadow-lg border border-stone-200 text-center hover:border-indigo-400">
+                    <div class="text-6xl mb-3">🤔</div>
+                    <h3 class="text-2xl font-bold mb-2 text-indigo-700">צעד 1: מה זה בכלל?</h3>
+                    <p class="text-lg text-stone-600">גלו מהם משחקי תפקידים, איך הם עובדים, ולמה זה התחביב הטוב בעולם.</p>
+                </a>
+                <a href="#systems" class="card bg-white p-6 rounded-lg shadow-lg border border-stone-200 text-center hover:border-indigo-400">
+                    <div class="text-6xl mb-3">🎲</div>
+                    <h3 class="text-2xl font-bold mb-2 text-indigo-700">צעד 2: בוחרים משחק</h3>
+                    <p class="text-lg text-stone-600">לכל הרפתקה יש חוקים. מצאו את שיטת המשחק שמתאימה בדיוק לכם.</p>
+                </a>
+                <a href="#community" class="card bg-white p-6 rounded-lg shadow-lg border border-stone-200 text-center hover:border-indigo-400">
+                    <div class="text-6xl mb-3">🤝</div>
+                    <h3 class="text-2xl font-bold mb-2 text-indigo-700">צעד 3: מצטרפים לקהילה</h3>
+                    <p class="text-lg text-stone-600">מצאו קבוצה לשחק בה, חנויות, חוגים, כנסים ומקומות שיעזרו לכם להתחיל.</p>
+                </a>
             </div>
-            <!-- End of new introductory text block -->
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="card bg-white p-6 rounded-lg shadow-lg border border-stone-200 text-right">
-                    <h3 class="text-3xl font-bold mb-3 text-indigo-700 flex items-center justify-start"><span class="text-4xl ml-3"></span>משחקי תפקידים שולחניים (TTRPG)</h3>
-                    <p class="text-lg text-stone-600">חוויה של סיפור שיתופי סביב שולחן (או אונליין). בעזרת דמיון, סט חוקים, קוביות, שחקנים ומנחה, אתם והחברים שלכם יוצרים יחד סיפור הרפתקאות ייחודי. הדגש הוא על יצירתיות, פתרון בעיות ועבודת צוות.</p>
+        </section>
+
+        <!-- WHAT IS RPG? SECTION -->
+        <!-- הוסר הרקע הלבן כדי לשמור על אחידות עם רקע העמוד -->
+        <section id="intro-what-is" class="mb-16 pt-10">
+            <div class="max-w-4xl mx-auto text-center">
+                 <h2 class="text-4xl md:text-5xl font-bold text-center mb-8 text-stone-900">אז מה זה בעצם משחקי תפקידים?</h2>
+                <div class="card bg-white p-6 rounded-lg shadow-lg border border-stone-200 text-right max-w-4xl mx-auto mb-8">
+                    <h3 class="text-3xl font-bold mb-3 text-stone-900">ליתר ביטחון, מה זה בכלל משחקי תפקידים?</h3>
+                    <p class="text-lg text-stone-600 mb-4">
+                        משחקי תפקידים הם פעילות חברתית שבה המשתתפים מגלמים דמויות בדיוניות בתוך עולם סיפור מסוים. כל שחקן בוחר דמות ומגיב לסיטואציות על פי אופייה, רצונותיה ויכולותיה. יש שיטה שמנחה את החוקים, ויש את "אדם האחראי" או המנחה שמוביל את העלילה.
+                    </p>
+                    <p class="text-lg text-stone-600">
+                        המטרה? ליצור יחד חוויות משותפות, לספר סיפור בלתי נשכח, לפתור תעלומות, ולפעמים גם פשוט לצחוק וליהנות ביחד.
+                    </p>
                 </div>
-                <div class="card bg-white p-6 rounded-lg shadow-lg border border-stone-200 text-right">
-                    <h3 class="text-3xl font-bold mb-3 text-teal-700 flex items-center justify-start"><span class="text-4xl ml-3"></span>משחקי תפקידים חיים (LARP)</h3>
-                    <p class="text-lg text-stone-600">כאן אתם לא רק מספרים את הסיפור - אתם חיים אותו. המשתתפים מגלמים פיזית את הדמויות, לובשים תלבושות ופועלים במרחב אמיתי. חוויה תיאטרלית וסוחפת המדגישה אלתור ואינטראקציה פיזית.</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="card bg-white p-6 rounded-lg shadow-lg border border-stone-200 text-right">
+                        <h3 class="text-3xl font-bold mb-3 text-indigo-700 flex items-center justify-start"><span class="text-4xl ml-3">🎲</span>משחקי תפקידים שולחניים (TTRPG)</h3>
+                        <p class="text-lg text-stone-600">חוויה של סיפור שיתופי סביב שולחן (או אונליין). בעזרת דמיון, סט חוקים, קוביות ומנחה, אתם והחברים שלכם יוצרים יחד סיפור הרפתקאות ייחודי. הדגש הוא על יצירתיות, פתרון בעיות ועבודת צוות.</p>
+                    </div>
+                    <div class="card bg-white p-6 rounded-lg shadow-lg border border-stone-200 text-right">
+                        <h3 class="text-3xl font-bold mb-3 text-teal-700 flex items-center justify-start"><span class="text-4xl ml-3">🎭</span>משחקי תפקידים חיים (LARP)</h3>
+                        <p class="text-lg text-stone-600">כאן אתם לא רק מספרים את הסיפור - אתם חיים אותו. המשתתפים מגלמים פיזית את הדמויות, לובשים תלבושות ופועלים במרחב אמיתי. חוויה תיאטרלית וסוחפת המדגישה אלתור ואינטראקציה פיזית.</p>
+                    </div>
+                </div>
+                <!-- הוספת סרטון "מורה מבוכים" -->
+                <div class="mt-12 text-center max-w-4xl mx-auto">
+                    <h3 class="text-3xl font-bold mb-4 text-stone-900">רוצים לראות איך נראה משחק?</h3>
+                    <p class="text-xl text-stone-600 mb-6">
+                        צפו בסרטון "מורה מבוכים" של דונקי שמסביר בצורה כיפית וברורה מה זה משחק תפקידים:
+                    </p>
+                    <a href="https://www.youtube.com/watch?v=KJvCcxxfqmc" target="_blank" rel="noopener noreferrer" class="card inline-block relative group rounded-lg shadow-lg overflow-hidden max-w-lg w-full">
+                        <img src="https://img.youtube.com/vi/KJvCcxxfqmc/hqdefault.jpg" alt="מורה מבוכים - איך נראה משחק תפקידים?" class="w-full h-auto transition-transform duration-300 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center transition-opacity duration-300 group-hover:bg-opacity-20">
+                            <svg class="w-20 h-20 text-white opacity-80 group-hover:opacity-100" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
 
+        <!-- NEW SECTION: WHAT DO YOU NEED? -->
+        <section id="getting-started" class="mb-16 pt-10">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-2 text-stone-900">מה צריך כדי להתחיל?</h2>
+            <p class="text-xl text-center text-stone-600 max-w-2xl mx-auto mb-8">החדשות הטובות: לא צריך הרבה! אפשר להתחיל לשחק עם ציוד בסיסי שכבר יש לכם בבית.</p>
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="card bg-white p-6 rounded-lg shadow-lg border border-stone-200 text-center">
+                    <div class="text-4xl mb-3">✏️</div>
+                    <h3 class="text-2xl font-bold mb-2 text-green-700">המינימום ההכרחי</h3>
+                    <ul class="text-lg text-stone-600 list-inside text-right space-y-2">
+                        <li>✔️ חברים (2-5 אנשים)</li>
+                        <li>✔️ דף, עיפרון ומחק</li>
+                        <li>✔️ סט קוביות (או אפליקציה)</li>
+                        <!-- הוסר "ספר חוקים בסיסי" -->
+                    </ul>
+                </div>
+                 <div class="card bg-white p-6 rounded-lg shadow-lg border border-stone-200 text-center">
+                    <div class="text-4xl mb-3">📚</div>
+                    <h3 class="text-2xl font-bold mb-2 text-blue-700">ערכת התחלה</h3>
+                    <p class="text-lg text-stone-600">הדרך המומלצת ביותר. ערכות כמו של "מבוכים ודרקונים" או "חרבות וכשפים" כוללות כל מה שצריך למשחק הראשון: ספר חוקים מקוצר, הרפתקה מוכנה, דמויות וקוביות.</p>
+                </div>
+                 <div class="card bg-white p-6 rounded-lg shadow-lg border border-stone-200 text-center">
+                    <div class="text-4xl mb-3">🏰</div>
+                    <h3 class="text-2xl font-bold mb-2 text-purple-700">למשקיענים (אופציונלי)</h3>
+                    <p class="text-lg text-stone-600">עם הזמן, אפשר לשדרג את החוויה עם מיניאטורות (דמויות פלסטיק), מפות קרב, מסתור למנחה וספרי הרחבה. אבל זה ממש לא חובה כדי ליהנות!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SYSTEMS SECTION -->
+        <!-- הוסר הרקע הלבן כדי לשמור על אחידות עם רקע העמוד -->
         <section id="systems" class="mb-16 pt-10">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-2 text-stone-900">בחירת שיטת משחק</h2>
+             <h2 class="text-4xl md:text-5xl font-bold text-center mb-2 text-stone-900">בחירת שיטת משחק</h2>
             <p class="text-xl text-center text-stone-600 max-w-2xl mx-auto mb-8">כל הרפתקה צריכה חוקים. שיטת המשחק היא מערכת הכללים והעולם שבהם תפעלו. הנה ארבע מהשיטות הפופולריות ביותר בישראל, שמתאימות במיוחד למתחילים.</p>
             <div id="systems-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
             </div>
-
-             <div class="mb-10">
-                <h3 class="text-3xl font-bold mb-3 text-stone-900 text-center mt-10">דירוג קושי השיטות</h3>
+            <div class="mb-10">
+                <h3 class="text-3xl font-bold mb-3 text-stone-900 text-center mt-10">השוואת רמת המורכבות</h3>
                 <div class="chart-container">
                     <canvas id="systemsChart"></canvas>
                 </div>
-                 <p class="text-base text-center text-stone-500 mt-2">תרשים זה מציג השוואה כללית של רמת מורכבות החוקים בין השיטות השונות, כדי לעזור לכם לבחור נקודת התחלה.</p>
+                 <p class="text-base text-center text-stone-500 mt-2">תרשים זה מציג השוואה כללית של רמת מורכבות החוקים בין השיטות (נמוך יותר = פשוט יותר).</p>
             </div>
         </section>
 
+        <!-- NEW SECTION: HOW TO FIND A GROUP -->
+        <section id="find-group" class="mb-16 pt-10 text-center">
+             <h2 class="text-4xl md:text-5xl font-bold mb-2 text-stone-900">איך מוצאים קבוצת משחק?</h2>
+            <p class="text-xl text-stone-600 max-w-3xl mx-auto mb-8">
+                מציאת קבוצה היא הצעד המרגש הבא! הנה כמה דרכים מומלצות:
+            </p>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="card bg-white p-6 rounded-lg shadow-lg border border-stone-200 text-right hover:border-indigo-400">
+                    <h3 class="text-2xl font-bold mb-3 text-indigo-700 flex items-center justify-start">👨‍👩‍👧‍👦 לשחקנים בוגרים</h3>
+                    <p class="text-lg text-stone-600 mb-4">
+                        הדרך הכי טובה היא להצטרף לאחת מקבוצות הקהילה הגדולות באונליין. שם תוכלו למצוא מודעות של מנחים ושחקנים, וגם לפרסם שאתם מחפשים קבוצה.
+                    </p>
+                    <a href="#community" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-indigo-700 transition-colors duration-200 text-base">מצאו קבוצות קהילה</a>
+                </div>
+                <div class="card bg-white p-6 rounded-lg shadow-lg border border-stone-200 text-right hover:border-teal-400">
+                    <h3 class="text-2xl font-bold mb-3 text-teal-700 flex items-center justify-start">👧👦 לילדים ובני נוער</h3>
+                    <p class="text-lg text-stone-600 mb-4">
+                        משחקי תפקידים הם חוויה מדהימה לילדים! ישנם חוגים ופעילויות ייעודיות שבהם מנחים מנוסים מלמדים את המשחק ומפעילים קבוצות.
+                    </p>
+                    <a href="#resources" class="inline-block bg-teal-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-teal-700 transition-colors duration-200 text-base">מצאו חוגים באזורכם</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMUNITY SECTION -->
+        <!-- הוסר הרקע הלבן כדי לשמור על אחידות עם רקע העמוד -->
         <section id="community" class="mb-16 pt-10">
             <h2 class="text-4xl md:text-5xl font-bold text-center mb-2 text-stone-900">הקהילה: ארגונים, כנסים וקבוצות</h2>
             <p class="text-xl text-center text-stone-600 max-w-2xl mx-auto mb-8">אתם לא לבד! קהילת משחקי התפקידים בישראל חיה, תוססת ומלאה באנשים שישמחו לעזור לכם להתחיל. כאן תמצאו את הגופים המרכזיים שמניעים את התחביב.</p>
-            <div class="flex justify-center space-x-4 space-x-reverse mb-8 flex-wrap items-center">
+            <div class="flex justify-center items-center space-x-4 space-x-reverse mb-8 flex-wrap">
                 <button class="filter-btn community-filter-btn px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-indigo-100 mb-2 text-base" data-filter="all">הכל</button>
-                <button class="filter-btn community-filter-btn px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-indigo-100 mb-2 text-base" data-filter="organization">ארגונים</button>
-                <button class="filter-btn community-filter-btn px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-indigo-100 mb-2 text-base" data-filter="event">כנסים ואירועים</button>
-                <button class="filter-btn community-filter-btn px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-indigo-100 mb-2 text-base" data-filter="group">קבוצות אונליין</button>
-                <input type="text" id="community-search" placeholder="חיפוש..." class="p-2 border border-stone-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2 mr-2 text-base">
+                <button class="filter-btn community-filter-btn px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-indigo-100 mb-2 text-base" data-filter="organization">🏢 ארגונים</button>
+                <button class="filter-btn community-filter-btn px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-indigo-100 mb-2 text-base" data-filter="event">📅 כנסים</button>
+                <button class="filter-btn community-filter-btn px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-indigo-100 mb-2 text-base" data-filter="group">💬 קבוצות אונליין</button>
+                <div class="relative">
+                    <input type="text" id="community-search" placeholder="חיפוש..." class="p-2 border border-stone-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2 mr-2 text-base">
+                </div>
             </div>
             <div id="community-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+             <div id="community-no-results" class="hidden text-center text-stone-600 text-lg mt-8">
+                <p>לא נמצאו תוצאות התואמות לחיפוש שלך.</p>
             </div>
             <div class="text-center mt-6 flex justify-center space-x-4 space-x-reverse">
                 <button id="community-load-more-btn" class="hidden px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-indigo-100 text-indigo-600 transition-colors duration-200 text-base">טען עוד</button>
@@ -155,45 +232,50 @@
             </div>
         </section>
 
+        <!-- RESOURCES SECTION -->
         <section id="resources" class="pt-10 mb-16">
             <h2 class="text-4xl md:text-5xl font-bold text-center mb-2 text-stone-900">איפה קונים ומשחקים?</h2>
             <p class="text-xl text-center text-stone-600 max-w-2xl mx-auto mb-8">צריכים קוביות, ספרי חוקים או מקום לשחק בו? מהחנויות המקצועיות ועד חוגי ילדים, אלו המקומות שיספקו לכם את כל מה שצריך.</p>
-             <div class="flex justify-center space-x-4 space-x-reverse mb-8 flex-wrap items-center">
+             <div class="flex justify-center items-center space-x-4 space-x-reverse mb-8 flex-wrap">
                 <button class="filter-btn resources-filter-btn px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-teal-100 mb-2 text-base" data-filter="all">הכל</button>
-                <button class="filter-btn resources-filter-btn px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-teal-100 mb-2 text-base" data-filter="business">עסקים וחנויות</button>
-                <button class="filter-btn resources-filter-btn px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-teal-100 mb-2 text-base" data-filter="kids">חוגי ילדים</button>
-                <input type="text" id="resources-search" placeholder="חיפוש..." class="p-2 border border-stone-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 mb-2 mr-2 text-base">
+                <button class="filter-btn resources-filter-btn px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-teal-100 mb-2 text-base" data-filter="business">🏪 עסקים וחנויות</button>
+                <button class="filter-btn resources-filter-btn px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-teal-100 mb-2 text-base" data-filter="kids">🧒 חוגי ילדים</button>
+                <div class="relative">
+                    <input type="text" id="resources-search" placeholder="חיפוש..." class="p-2 border border-stone-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 mb-2 mr-2 text-base">
+                </div>
             </div>
             <div id="resources-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+            <div id="resources-no-results" class="hidden text-center text-stone-600 text-lg mt-8">
+                <p>לא נמצאו תוצאות התואמות לחיפוש שלך.</p>
             </div>
             <div class="text-center mt-6 flex justify-center space-x-4 space-x-reverse">
                 <button id="resources-load-more-btn" class="hidden px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-teal-100 text-teal-600 transition-colors duration-200 text-base">טען עוד</button>
                 <button id="resources-collapse-btn" class="hidden px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-teal-100 text-teal-600 transition-colors duration-200 text-base">צמצם</button>
             </div>
         </section>
-
+        
+        <!-- UPCOMING EVENT SECTION -->
+        <!-- הוסר הרקע הלבן כדי לשמור על אחידות עם רקע העמוד -->
         <section id="closest-event" class="pt-10 mb-16">
             <h2 class="text-4xl md:text-5xl font-bold text-center mb-8 text-stone-900">מתי הכנס הבא?</h2>
             <div id="closest-event-container" class="max-w-md mx-auto">
-                <!-- Closest event card will be rendered here by JavaScript -->
+                <!-- Closest event card will be rendered here -->
             </div>
-            <p class="text-base text-center text-stone-500 mt-2">המידע אודות זמני הכנסים אינו מדויק, ולכן כדאי להתעדכן מהגופים המארגנים עצמם של הכנסים.</p>
-
+             <p class="text-base text-center text-stone-500 mt-4">המידע אודות זמני הכנסים הוא הערכה בלבד. תמיד כדאי להתעדכן באתרים הרשמיים של המארגנים.</p>
         </section>
 
+        <!-- CONTACT SECTION -->
         <section id="contact" class="pt-10">
             <h2 class="text-4xl md:text-5xl font-bold text-center mb-2 text-stone-900">צרו קשר</h2>
             <p class="text-xl text-center text-stone-600 max-w-2xl mx-auto mb-8">
-                רוצים להוסיף קהילה נוספת? רוצים להוסיף את העסק שלכם? אולי מצאתם טעות?
-                צרו קשר ונשתדל לעשות זאת בהקדם במידת ההתאמה.
+                מצאתם טעות? רוצים להוסיף את העסק או הקהילה שלכם? יש לכם הצעה לשיפור? נשמח לשמוע!
             </p>
-
             <div class="flex justify-center space-x-4 space-x-reverse mb-8 flex-wrap">
                 <button class="contact-btn px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-purple-100 mb-2 text-base" data-platform="gmail">שלחו מייל דרך Gmail</button>
                 <button class="contact-btn px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-purple-100 mb-2 text-base" data-platform="outlook">שלחו מייל דרך Outlook</button>
-                <button class="contact-btn px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-purple-100 mb-2 text-base" data-platform="other">שלחו מייל דרך פלטפורמה אחרת</button>
+                <button class="contact-btn px-4 py-2 rounded-md font-semibold bg-white shadow-sm hover:bg-purple-100 mb-2 text-base" data-platform="other">פלטפורמה אחרת</button>
             </div>
-
             <div id="contact-content" class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg border border-stone-200 text-right">
                 <div id="gmail-outlook-form">
                     <textarea id="email-body-textarea" class="w-full p-3 border border-stone-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 mb-4 h-32 text-base" placeholder="כתבו כאן את תוכן המייל..."></textarea>
@@ -207,109 +289,73 @@
                 </div>
             </div>
         </section>
-
     </main>
-    
+
     <footer class="text-center py-6 mt-12 bg-stone-200 border-t border-stone-300">
-        <p class="text-base text-stone-600">נוצר עבור קהילת שחקני התפקידים בישראל ע"י <a href="https://rrpg.top" class="text-indigo-600 hover:underline">ראובן צירל-מנדלוביץ'</a>.</p>
+        <p class="text-base text-stone-600">נוצר באהבה עבור קהילת שחקני התפקידים בישראל ע"י <a href="https://rrpg.top" class="text-indigo-600 hover:underline">ראובן צירל-מנדלוביץ'</a>.</p>
     </footer>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-
     const systemsData = [
-        { 
-            name: "מבוכים ודרקונים (D&D 5e)", 
-            description: "המשחק הפופולרי ביותר בעולם, המציע חווית פנטזיה קלאסית. הוא משלב בצורה מופלאה אלמנטים של פנטזיה, קבלת החלטות אסטרטגית ושיתוף פעולה חברתי עמוק.",
-            why: "נקודת הכניסה הסטנדרטית לתחביב. קל למצוא קבוצה וחומרים למתחילים, כמו 'ערכת ההתחלה' המצוינת.",
-            complexity: 10,
-            color: 'rgba(220, 38, 38, 0.7)',
-            link: "https://www.dndbeyond.com/posts/1480-what-is-dungeons-dragons?srsltid=AfmBOopzDWbsP4e1DMGMjSrMehoPdOZu_TQuJxejwUSFIloncFH2nZBV"
-        },
-        { 
-            name: "חרבות וכשפים", 
-            description: "חזרה לשורשים של משחקי התפקידים, עם שיטה קלת-חוקים וגמישה המעודדת יצירתיות ואלתור מצד השחקנים והמנחה. הערכה למתחיל היא שער הכניסה לתחביב משחקי התפקידים, מיועדת ומותאמת לגילאי 8 ומעלה, 2-7 משתתפים, ומכילה את כל מה שצריך כדי ללמוד ולהתחיל לשחק בתחביב הטוב בעולם.",
-            why: "מעולה למתחילים ולילדים. ערכת המתחיל בעברית מלמדת את המשחק צעד-אחר-צעד, כולל הרפתקת סולו.",
-            complexity: 3,
-            color: 'rgba(217, 119, 6, 0.7)',
-            link: "https://swordsandwizardry.co.il/"
-        },
-        { 
-            name: "פאת'פיינדר בעולמות פראיים", 
-            description: "שילוב מנצח של עולם הפנטזיה העשיר של 'פאת'פיינדר' עם מנוע החוקים המהיר והקולנועי של 'עולמות פראיים'. בואו לשחק בשיטה וגלו עולם של הרפתקאות מסמרות שיער, אקשן מותח עצבים, וסיפורים נועזים שתזכרו שנים.",
-            why: "הטוב משני העולמות - עומק עלילתי עם חוקים קלילים. ספר הבסיס בעברית כולל את כל מה שצריך כדי להתחיל לשחק.",
-            complexity: 7,
-            color: 'rgba(34, 197, 94, 0.7)',
-            link: "https://pundak.games/savage-pathfinder/?srsltid=AfmBOorJInYvkaiDvnSU9dOQqbwjYhR4CbJucsDCyYcMt02V0Hnp0D3g"
-        },
-        { 
-            name: "מנוע האפוקליפסה", 
-            description: "מנוע משחק שעליו נבנות שיטות משחק תפקידים רבות, תוך שימור עקרונות בסיסיים משותפים. עם עידוד למהלכים ייחודיים, חשיבה יצירתית, ודגש על סיפור ולא קרב, נהפך המנוע לשיטה השנייה הנפוצה בעולם שהשיטות מתבססות עליה. המשחקים הנפוצים בשפה העברית ובישראל הם 'פלאים: גיבורי המחר' ו'וואנור'.",
-            why: "מנוע גמיש ופשוט ללמידה, המאפשר להתמקד בסיפור וביצירתיות. מתאים למגוון רחב של ז'אנרים ומשחקים.",
-            complexity: 5,
-            color: 'rgba(255, 165, 0, 0.7)', // Orange color
-            link: "https://vanor.co.il/"
-        }
+        { name: "מבוכים ודרקונים (D&D 5e)", badge: "הנפוץ ביותר בעולם", description: "המשחק הפופולרי ביותר בעולם, המציע חווית פנטזיה קלאסית. הוא משלב בצורה מופלאה אלמנטים של פנטזיה, קבלת החלטות אסטרטגית ושיתוף פעולה חברתי עמוק.", why: "נקודת הכניסה הסטנדרטית לתחביב. קל למצוא קבוצה וחומרים למתחילים, כמו 'ערכת ההתחלה' המצוינת.", complexity: 10, color: 'rgba(220, 38, 38, 0.7)', link: "https://www.dndbeyond.com/" },
+        { name: "חרבות וכשפים", badge: "מומלץ למתחילים ולצעירים", description: "חזרה לשורשים של משחקי התפקידים, עם שיטה קלת-חוקים וגמישה המעודדת יצירתיות ואלתור מצד השחקנים והמנחה. הערכה למתחיל היא שער כניסה מושלם לתחביב.", why: "מעולה למתחילים ולילדים. ערכת המתחיל בעברית מלמדת את המשחק צעד-אחר-צעד, כולל הרפתקת סולו.", complexity: 3, color: 'rgba(217, 119, 6, 0.7)', link: "https://swordsandwizardry.co.il/" },
+        { name: "פאת'פיינדר בעולמות פראיים", badge: "לחובבי האקשן", description: "שילוב מנצח של עולם הפנטזיה העשיר של 'פאת'פיינדר' עם מנוע החוקים המהיר והקולנועי של 'עולמות פראיים'. הרפתקאות מסמרות שיער ואקשן מותח עצבים.", why: "הטוב משני העולמות - עומק עלילתי עם חוקים קלילים. ספר הבסיס בעברית כולל את כל מה שצריך כדי להתחיל לשחק.", complexity: 7, color: 'rgba(34, 197, 94, 0.7)', link: "https://pundak.games/savage-pathfinder/" },
+        { name: "מנוע האפוקליפסה", badge: "לחובבי חופש ומקוריות", description: "מנוע משחק גמיש שעליו בנויות שיטות רבות. שם דגש על סיפור ויצירתיות על פני קרבות טקטיים. המשחקים הנפוצים בעברית הם 'פלאים: גיבורי המחר' ו'וואנור'.", why: "מנוע פשוט ללמידה המאפשר להתמקד בסיפור. מתאים למגוון רחב של ז'אנרים וסגנונות משחק.", complexity: 5, color: 'rgba(255, 165, 0, 0.7)', link: "https://vanor.co.il/" }
     ];
 
     const communityData = [
-        { name: "העמותה למשחקי תפקידים בישראל", type: "organization", description: "הגוף המרכזי המוכר לקידום התחביב. מארגנת כנסים (ביגור לשעבר וכרמיקון), תומכת בפרויקטים, אירועים ויוצרים, ומפעילה את הוצאת 'גיבורים'.", link: "https://roleplay.org.il/", month: 0 },
+        { name: "העמותה למשחקי תפקידים בישראל", type: "organization", description: "הגוף המרכזי המוכר לקידום התחביב. מארגנת כנסים (כרמיקון), תומכת בפרויקטים, אירועים ויוצרים, ומפעילה את הוצאת 'גיבורים'.", link: "https://roleplay.org.il/", month: 0 },
         { name: "האגודה למד\"ב ופנטסיה", type: "organization", description: "שותפה בארגון כנסים מרכזיים כמו פסטיבל אייקון, ומקדמת את תרבות הז'אנר בישראל.", link: "https://www.sf-f.org.il/", month: 0 },
-        { name: "גלגול - משחקי תפקידים למען הקהילה", type: "organization", description: "משחקי תפקידים למען הקהילה מאת ראובן צירל-מנדלוביץ'. האתר מציע משחקים מקוריים, תרגומים נגישים ופעילויות שבהן ראובן מעורב.", link: "https://rrpg.top/", month: 0 },
-        { name: "הפונדק (קהילה)", type: "group", description: "הקהילה המקוונת הוותיקה והמובילה של התחביב, באתר פורומים ותכנים של מבוכים ודרקונים, משחקי תפקידים ומשחקי לוח.", link: "https://www.pundak.co.il/", month: 0 },
-        { name: "הפונדק הוצאה לאור", type: "organization", description: "הוצאה לאור של משחקי תפקידים ותכנים רבים מאז 2003, כגון פאת'פיינדר בעולמות פראיים ואיי הסערה.", link: "https://pundak.games/", month: 0 },
+        { name: "גלגול - משחקי תפקידים למען הקהילה", type: "organization", description: "מיזם של ראובן צירל-מנדלוביץ' המציע משחקים מקוריים, תרגומים נגישים ופעילויות קהילתיות.", link: "https://rrpg.top/", month: 0 },
+        { name: "הפונדק (קהילה)", type: "group", description: "הקהילה המקוונת הוותיקה והמובילה של התחביב, עם פורומים פעילים ותכנים רבים.", link: "https://www.pundak.co.il/", month: 0 },
+        { name: "הפונדק הוצאה לאור", type: "organization", description: "הוצאה לאור של משחקי תפקידים ותכנים רבים מאז 2003, כולל 'פאת'פיינדר בעולמות פראיים'.", link: "https://pundak.games/", month: 0 },
         { name: "לארפ גלדיאטור", type: "organization", description: "המרכז הישראלי למשחקי לארפ. מארגן אירועים בארץ ובחו\"ל ומהווה מוקד ידע וציוד.", link: "https://www.larp-g.com/", month: 0 },
-        { name: "פסטיבל אייקון", type: "event", description: "אירוע הדגל השנתי של קהילת חובבי הז'אנר, עם מתחם ענק למשחקי תפקידים, דוכנים ועוד.", link: "https://www.icon.org.il/", month: 10, location: "תל אביב" }, // October
-        { name: "כנס דרקוניקון", type: "event", description: "כנס משחקי השולחן המוביל בישראל, מתקיים באוגוסט ומציע מגוון עצום של משחקים למתחילים וותיקים.", link: "https://dragoncon.co.il/", month: 8, location: "תל אביב" },   // August
-        { name: "לארפ ליברה", type: "event", description: "אירוע לארפ ותיק עם דגש על סיפור מתמשך ועולם עשיר בו השחקנים מעצבים את העלילה.", link: "https://libra.co.il/", month: 10, location: "פארק מקורות הירקון" },         // October
-        { name: "כנס כרמיקון", type: "event", description: "כנס משחקי תפקידים ופנטזיה המתקיים בכרמיאל, עם דגש על קהילת הצפון.", link: "https://karmicon.roleplay.org.il/index.html", month: 12, location: "כרמיאל" }, // December
-        { name: "כנס דורות", type: "event", description: "כנס שנתי למדע בדיוני, פנטזיה ומשחקי תפקידים, המציע מגוון פעילויות והרצאות.", link: "https://dorot-con.org.il/", month: 3, location: "משתנה" },       // March
+        { name: "פסטיבל אייקון", type: "event", description: "אירוע הדגל השנתי של קהילת חובבי הז'אנר, עם מתחם ענק למשחקי תפקידים, דוכנים ועוד.", link: "https://www.icon.org.il/", month: 10, location: "תל אביב" },
+        { name: "כנס דרקוניקון", type: "event", description: "כנס משחקי השולחן המוביל בישראל, מתקיים באוגוסט ומציע מגוון עצום של משחקים למתחילים וותיקים.", link: "https://dragoncon.co.il/", month: 8, location: "תל אביב" },
+        { name: "לארפ ליברה", type: "event", description: "אירוע לארפ ותיק עם דגש על סיפור מתמשך ועולם עשיר בו השחקנים מעצבים את העלילה.", link: "https://libra.co.il/", month: 10, location: "פארק מקורות הירקון" },
+        { name: "כנס כרמיקון", type: "event", description: "כנס משחקי תפקידים ופנטזיה המתקיים בכרמיאל, עם דגש על קהילת הצפון.", link: "https://karmicon.roleplay.org.il/index.html", month: 12, location: "כרמיאל" },
+        { name: "כנס דורות", type: "event", description: "כנס שנתי למדע בדיוני, פנטזיה ומשחקי תפקידים, המציע מגוון פעילויות והרצאות.", link: "https://dorot-con.org.il/", month: 3, location: "משתנה" },
         { name: "שחקני תפקידים בישראל (פייסבוק)", type: "group", description: "הקבוצה הגדולה והפעילה ביותר לדיונים, שיתוף, ומציאת קבוצות משחק.", link: "https://www.facebook.com/groups/israeliroleplayers/", month: 0 },
         { name: "משחקי תפקידים בישראל (פייסבוק)", type: "group", description: "הקבוצה השנייה הגדולה והפעילה ביותר לדיונים, שיתוף, ומציאת קבוצות משחק.", link: "https://www.facebook.com/groups/roleplayingisrael", month: 0 },
         { name: "לארפ ישראל (פייסבוק)", type: "group", description: "הקבוצה המרכזית של קהילת הלארפ לדיונים, עדכונים על אירועים ותיאומים.", link: "https://www.facebook.com/groups/israelilarp", month: 0 },
         { name: "פורום חיפוש שחקנים בפונדק", type: "group", description: "לוח המודעות הוותיק והיעיל ביותר למציאת קבוצת משחק לפי אזור גיאוגרפי.", link: "https://www.pundak.co.il/forums/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%A9%D7%97%D7%A7%D7%A0%D7%99%D7%9D-%D7%9E%D7%A0%D7%97%D7%99%D7%9D-%D7%95%D7%A7%D7%91%D7%95%D7%A6%D7%95%D7%AA-%D7%9E%D7%A9%D7%97%D7%A7%D7%99-%D7%AA%D7%A4%D7%A7%D7%99%D7%93%D7%99%D7%9D.31/", month: 0 },
-        { name: "רולפליירים בירושלים", type: "group", description: "קבוצת פייסבוק ייעודית לחיפוש קבוצות ואירועים באזור ירושלים.", link: "https://www.facebook.com/share/g/15fN96jBnU/", month: 0 },
-        { name: "ממלכות הצפון - לאצבע הגליל והגולן", type: "group", description: "קבוצת פייסבוק לקהילת משחקי התפקידים באצבע הגליל והגולן.", link: "https://www.facebook.com/groups/1628946144025403/", month: 0 },
-        { name: "רוחות הדרום - מועדון משחקי התפקידים של באר שבע", type: "group", description: "קבוצת פייסבוק למועדון משחקי התפקידים של באר שבע והסביבה.", link: "https://www.facebook.com/WindsoftheSouth", month: 0 }
     ];
 
     const resourcesData = [
         { name: "פריק (Freak)", type: "business", location: "תל אביב (דיזנגוף סנטר)", description: "חנות משחקים וקהילה בדיזנגוף-סנטר המציעה מגוון רחב של משחקי תפקידים, קלפים ולוח.", link: "https://www.freak-tlv.com/" },
         { name: "DRIX דריקס חיפה", type: "business", location: "חיפה", description: "בית קפה למשחקים עם חדר משחקי תפקידים ייעודי וספריית משחקי לוח ענקית.", link: "https://www.drixhaifa.com/" },
-        { name: "Rooms & Realms", type: "business", location: "רחובות", description: " חדר משחקי התפקידים הראשון של ישראל, חדר ייעודי ומעוצב לחוויית משחק סוחפת.", link: "https://www.roomsandrealms.com/" },
-        { name: "לארפ גלדיאטור (LARP Gladiator)", type: "business", location: "ישראל (מרכז)", description: "ארגון אירועי לארפ בישראל ובעולם וגם מקור לציוד ותחפושות לארפ.", link: "https://www.larp-g.com/" },
-        { name: "הגובלין החכם (Wise Goblin)", type: "business", location: "ראשון לציון, הרצליה", description: "חדרי משחק מעוצבים עם מוזיקה, תאורה ומסך אינטראקטיבי, אלפי מיניאטורות ותפאורה, מנחים מקצועיים, שירותי הדפסת תלת מימד, חנות לציוד (מיניאטורות, קוביות, מפות, מגדלי קוביות).", link: "https://wisegoblin.com/" },
+        { name: "Rooms & Realms", type: "business", location: "רחובות", description: "חדר משחקי התפקידים הראשון של ישראל, חדר ייעודי ומעוצב לחוויית משחק סוחפת.", link: "https://www.roomsandrealms.com/" },
+        { name: "הגובלין החכם (Wise Goblin)", type: "business", location: "ראשון לציון, הרצליה", description: "חדרי משחק מעוצבים עם תפאורה, מנחים מקצועיים, חנות לציוד (מיניאטורות, קוביות) ושירותי הדפסת תלת מימד.", link: "https://wisegoblin.com/" },
         { name: "נקסוס - מרכז חוגים והעשרה", type: "business", location: "ראשון לציון", description: "חנות המתמחה במוצרי משחקי תפקידים, משחקי קלפים ואביזרים.", link: "https://www.inexus.co.il/" },
         { name: "הממלכה", type: "business", location: "הוד השרון", description: "חנות משחקים וקהילה המציעה מגוון רחב של משחקי תפקידים, קלפים ולוח.", link: "https://thekingdom.co.il/" },
-        { name: "סירולינה Sirolyna", type: "business", location: "ירושלים", description: "חנות המשחקים הגדולה של ירושלים ובעלת המבחר הגדול ביותר של משחקי קלפים בישראל. בנוסף, מארגת אירועי משחקי תפקידים וחוגים.", link: "https://thekingdom.co.il/" },
+        { name: "סירולינה Sirolyna", type: "business", location: "ירושלים", description: "חנות המשחקים הגדולה של ירושלים ובעלת מבחר גדול של משחקי קלפים. מארגנת גם אירועים וחוגים.", link: "https://sirolyna.co.il/" },
         { name: "קרן השפע", type: "kids", location: "גוש דן", description: "יוצרת הרפתקאות משחקי תפקידים, מפעילה קייטנות דמיון, הפעלות לימי הולדת ולילדי עובדים.", link: "https://xn----8hc5aojohl.co.il/" },
         { name: "שושנת המדבר", type: "kids", location: "צפון הארץ", description: "מפעילה חוגי העשרה במגוון רחב של שיטות בבתי ספר ומתנ\"סים.", link: "https://hashoshana.co.il/" },
         { name: "הבקתה משחקי תפקידים", type: "kids", location: "קדימה", description: "מרכז חוגים וקהילה לילדים ונוער עם דגש על העצמה ומיומנויות חברתיות.", link: "https://www.habiktamt.com/" },
         { name: "שער הדמיון", type: "kids", location: "אזור השרון", description: "חוגי משחקי תפקידים בקבוצות קטנות עם מנחים מנוסים, תוך דגש על פיתוח כישורים.", link: "https://dramaplay.co.il/" },
-        { name: "MYDM משה ימין מבוכים ודרקונים", type: "kids", location: "שפלת יהודה", description: "חוגי משחקי תפקידים לילדים ונוער, דגש על פיתוח יצירתיות ומיומנויות חברתיות.", link: "https://www.facebook.com/MosheYaminDongeonMaster/" },
+        { name: "MYDM משה ימין", type: "kids", location: "שפלת יהודה", description: "חוגי משחקי תפקידים לילדים ונוער, דגש על פיתוח יצירתיות ומיומנויות חברתיות.", link: "https://www.facebook.com/MosheYaminDongeonMaster/" },
     ];
 
-    // Removed the global tooltip element and its related JavaScript logic
-    // as it's no longer needed for the "Apocalypse Engine" entry.
-
+    // --- Systems Section Rendering ---
     const systemsContainer = document.getElementById('systems-container');
     systemsData.forEach(system => {
         const card = document.createElement('div');
-        card.className = 'card bg-white rounded-lg shadow-lg border border-stone-200 overflow-hidden';
+        card.className = 'card bg-white rounded-lg shadow-lg border border-stone-200 overflow-hidden flex flex-col';
         card.innerHTML = `
-            <div class="p-6 cursor-pointer" onclick="toggleDetails(this)">
+            <div class="p-6 cursor-pointer flex-grow" onclick="toggleDetails(this)">
+                ${system.badge ? `<div class="mb-3"><span class="text-sm font-bold text-white px-3 py-1 rounded-full" style="background-color: ${system.color.replace('0.7', '1')}">${system.badge}</span></div>` : ''}
                 <h3 class="text-2xl font-bold text-gray-800 mb-2">
                     <a href="${system.link}" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600">${system.name}</a>
                 </h3>
                 <p class="text-lg text-stone-600">${system.description}</p>
-                 <div class="flex items-center justify-end mt-4 text-base font-semibold text-indigo-600">
-                    <span>לפרטים נוספים</span>
+                <div class="flex items-center justify-end mt-4 text-base font-semibold text-indigo-600">
+                    <span>למה זה טוב למתחילים?</span>
                     <svg class="w-4 h-4 mr-2 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </div>
             </div>
             <div class="details-content bg-gray-50">
                 <div class="p-6 border-t border-gray-200">
-                    <h4 class="font-bold text-lg text-gray-700 mb-2">למה זה טוב למתחילים?</h4>
                     <p class="text-base text-stone-600">${system.why}</p>
                 </div>
             </div>
@@ -317,26 +363,34 @@ document.addEventListener('DOMContentLoaded', () => {
         systemsContainer.appendChild(card);
     });
 
-    const communityContainer = document.getElementById('community-container');
-    const resourcesContainer = document.getElementById('resources-container');
-    const closestEventContainer = document.getElementById('closest-event-container');
-
+    window.toggleDetails = function(element) {
+        const content = element.nextElementSibling;
+        const svg = element.querySelector('svg');
+        if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+            content.style.maxHeight = '0px';
+            svg.style.transform = 'rotate(0deg)';
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            svg.style.transform = 'rotate(180deg)';
+        }
+    }
+    
+    // --- Card Creation and Filtering Logic ---
     function createCard(item) {
         let typeLabel = '';
         let typeColor = '';
-        switch(item.type) {
-            case 'organization': typeLabel = 'ארגון'; typeColor = 'bg-blue-100 text-blue-800'; break;
-            case 'event': typeLabel = 'אירוע/כנס'; typeColor = 'bg-purple-100 text-purple-800'; break;
-            case 'group': typeLabel = 'קבוצת אונליין'; typeColor = 'bg-green-100 text-green-800'; break;
-            case 'business': typeLabel = 'עסק/חנות'; typeColor = 'bg-yellow-100 text-yellow-800'; break;
-            case 'kids': typeLabel = 'חוגי ילדים'; typeColor = 'bg-pink-100 text-pink-800'; break;
+        switch (item.type) {
+            case 'organization': typeLabel = '🏢 ארגון'; typeColor = 'bg-blue-100 text-blue-800'; break;
+            case 'event': typeLabel = '📅 אירוע/כנס'; typeColor = 'bg-purple-100 text-purple-800'; break;
+            case 'group': typeLabel = '💬 קבוצת אונליין'; typeColor = 'bg-green-100 text-green-800'; break;
+            case 'business': typeLabel = '🏪 עסק/חנות'; typeColor = 'bg-yellow-100 text-yellow-800'; break;
+            case 'kids': typeLabel = '🧒 חוגי ילדים'; typeColor = 'bg-pink-100 text-pink-800'; break;
         }
-        
         return `
-            <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="card block bg-white p-6 rounded-lg shadow-lg border border-stone-200 hover:border-indigo-400">
+            <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="card block bg-white p-6 rounded-lg shadow-lg border border-stone-200 hover:border-indigo-400 h-full">
                 <div class="flex justify-between items-start">
                     <h3 class="text-xl font-bold text-stone-800 mb-2">${item.name}</h3>
-                    <span class="text-sm font-semibold px-2 py-1 rounded-full ${typeColor}">${typeLabel}</span>
+                    <span class="text-sm font-semibold px-2 py-1 rounded-full ${typeColor} whitespace-nowrap">${typeLabel}</span>
                 </div>
                 ${item.location ? `<p class="text-base text-stone-500 mb-2 font-semibold">📍 ${item.location}</p>` : ''}
                 <p class="text-base text-stone-600">${item.description}</p>
@@ -347,39 +401,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function calculateRelevance(item, query) {
         const lowerQuery = query.toLowerCase();
         let score = 0;
-
-        // Exact match on name
-        if (item.name.toLowerCase() === lowerQuery) {
-            score += 100;
-        }
-        // Name starts with
-        if (item.name.toLowerCase().startsWith(lowerQuery)) {
-            score += 50;
-        }
-        // Name contains
-        if (item.name.toLowerCase().includes(lowerQuery)) {
-            score += 20;
-        }
-        // Description contains
-        if (item.description.toLowerCase().includes(lowerQuery)) {
-            score += 10;
-        }
-        // Location contains (if applicable)
-        if (item.location && item.location.toLowerCase().includes(lowerQuery)) {
-            score += 5;
-        }
+        if (item.name.toLowerCase().includes(lowerQuery)) score += 20;
+        if (item.description.toLowerCase().includes(lowerQuery)) score += 10;
+        if (item.location && item.location.toLowerCase().includes(lowerQuery)) score += 5;
         return score;
     }
 
-    function setupFilterAndLoadMore(containerId, data, buttonClass, searchInputId, loadMoreBtnId, collapseBtnId) {
+    function setupFilterAndLoadMore(containerId, data, buttonClass, searchInputId, loadMoreBtnId, collapseBtnId, noResultsId) {
         const container = document.getElementById(containerId);
         const buttons = document.querySelectorAll(`.${buttonClass}`);
         const searchInput = document.getElementById(searchInputId);
         const loadMoreBtn = document.getElementById(loadMoreBtnId);
-        const collapseBtn = document.getElementById(collapseBtnId); // Get the new collapse button
+        const collapseBtn = document.getElementById(collapseBtnId);
+        const noResultsEl = document.getElementById(noResultsId);
 
         let currentFilter = 'all';
-        let currentLimit = 6; // Initial limit for display
+        let currentLimit = 6;
 
         function updateDisplay() {
             let filteredData = data;
@@ -397,82 +434,66 @@ document.addEventListener('DOMContentLoaded', () => {
                     .map(entry => entry.item);
             }
 
+            // Show "no results" message if applicable
+            if(filteredData.length === 0 && searchInput.value) {
+                noResultsEl.classList.remove('hidden');
+            } else {
+                noResultsEl.classList.add('hidden');
+            }
+
             const dataToRender = filteredData.slice(0, currentLimit);
             container.innerHTML = dataToRender.map(createCard).join('');
 
-            // Show/hide load more button
-            if (filteredData.length > currentLimit) {
-                loadMoreBtn.classList.remove('hidden');
-            } else {
-                loadMoreBtn.classList.add('hidden');
-            }
-
-            // Show/hide collapse button
-            if (filteredData.length > 6 && currentLimit >= filteredData.length) {
-                collapseBtn.classList.remove('hidden');
-            } else {
-                collapseBtn.classList.add('hidden');
-            }
+            loadMoreBtn.classList.toggle('hidden', filteredData.length <= currentLimit);
+            collapseBtn.classList.toggle('hidden', !(filteredData.length > 6 && currentLimit >= filteredData.length));
         }
 
         buttons.forEach(button => {
             button.addEventListener('click', () => {
                 currentFilter = button.dataset.filter;
-                currentLimit = 6; // Reset limit when filter changes
-                buttons.forEach(btn => btn.classList.remove('active', 'bg-indigo-600', 'text-white', 'bg-teal-600'));
+                currentLimit = 6;
+                // הסר את כל סגנונות האקטיב האפשריים (ישנים וחדשים) מכל הכפתורים בקבוצה
+                buttons.forEach(btn => btn.classList.remove('active', 'bg-indigo-600', 'text-white', 'bg-teal-600', 'bg-indigo-100', 'text-indigo-900', 'bg-teal-100', 'text-teal-900'));
                 button.classList.add('active');
+                // הוסף את סגנון האקטיב החדש והקריא
                 if (buttonClass.includes('community')) {
-                   button.classList.add('bg-indigo-600', 'text-white');
+                    button.classList.add('bg-indigo-100', 'text-indigo-900');
                 } else {
-                   button.classList.add('bg-teal-600', 'text-white');
+                    button.classList.add('bg-teal-100', 'text-teal-900');
                 }
                 updateDisplay();
             });
         });
 
         searchInput.addEventListener('input', () => {
-            currentLimit = 6; // Reset limit when search changes
+            currentLimit = 6;
             updateDisplay();
         });
 
         loadMoreBtn.addEventListener('click', () => {
-            currentLimit += 6; // Load 6 more items
+            currentLimit += 6;
             updateDisplay();
         });
-
-        // Event listener for the new collapse button
+        
         collapseBtn.addEventListener('click', () => {
-            currentLimit = 6; // Reset to initial 6 items
+            currentLimit = 6;
             updateDisplay();
         });
 
-        // Initial display
         updateDisplay();
     }
 
-    setupFilterAndLoadMore('community-container', communityData, 'community-filter-btn', 'community-search', 'community-load-more-btn', 'community-collapse-btn');
-    setupFilterAndLoadMore('resources-container', resourcesData, 'resources-filter-btn', 'resources-search', 'resources-load-more-btn', 'resources-collapse-btn');
+    setupFilterAndLoadMore('community-container', communityData, 'community-filter-btn', 'community-search', 'community-load-more-btn', 'community-collapse-btn', 'community-no-results');
+    setupFilterAndLoadMore('resources-container', resourcesData, 'resources-filter-btn', 'resources-search', 'resources-load-more-btn', 'resources-collapse-btn', 'resources-no-results');
 
-
-    window.toggleDetails = function(element) {
-        const content = element.nextElementSibling;
-        const svg = element.querySelector('svg');
-        if (content.style.maxHeight && content.style.maxHeight !== '0px') {
-            content.style.maxHeight = '0px';
-            svg.style.transform = 'rotate(0deg)';
-        } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-            svg.style.transform = 'rotate(180deg)';
-        }
-    }
-    
+    // --- Chart.js Rendering ---
     const ctx = document.getElementById('systemsChart').getContext('2d');
     const systemsChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: systemsData.map(s => s.name),
             datasets: [{
-                label: 'מורכבות חוקים (נמוך יותר = פשוט יותר)',
+                label: 'מורכבות חוקים',
                 data: systemsData.map(s => s.complexity),
                 backgroundColor: systemsData.map(s => s.color),
                 borderColor: systemsData.map(s => s.color.replace('0.7', '1')),
@@ -485,167 +506,117 @@ document.addEventListener('DOMContentLoaded', () => {
             responsive: true,
             maintainAspectRatio: false,
             scales: {
-                x: {
-                    beginAtZero: true,
-                    max: 10,
-                    grid: {
-                        color: 'rgba(0,0,0,0.05)'
-                    },
-                    ticks: {
-                       font: {
-                           family: "'Assistant', sans-serif"
-                       }
-                    }
-                },
-                y: {
-                     grid: {
-                        display: false
-                    },
-                    ticks: {
-                       font: {
-                           family: "'Assistant', sans-serif",
-                           size: 14, /* Increased from 13 */
-                       },
-                       autoSkip: false
-                    }
-                }
+                x: { beginAtZero: true, max: 10, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { font: { family: "'Assistant', sans-serif" }}},
+                y: { grid: { display: false }, ticks: { font: { family: "'Assistant', sans-serif", size: 14 }, autoSkip: false }}
             },
             plugins: {
-                legend: {
-                    display: false
-                },
-                tooltip: {
-                    rtl: true,
-                    bodyFont: {
-                        family: "'Assistant', sans-serif",
-                    },
-                    titleFont: {
-                         family: "'Assistant', sans-serif",
-                    }
-                }
+                legend: { display: false },
+                tooltip: { rtl: true, bodyFont: { family: "'Assistant', sans-serif" }, titleFont: { family: "'Assistant', sans-serif" }}
             }
         }
     });
 
+    // --- Mobile Navigation ---
     document.getElementById('mobile-nav').addEventListener('change', function() {
-        window.location.hash = this.value;
+        const targetId = this.value;
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80, // Offset for header
+                behavior: 'smooth'
+            });
+        }
     });
 
-    // Contact section logic
+    // --- Contact Section Logic ---
     const contactButtons = document.querySelectorAll('.contact-btn');
     const gmailOutlookForm = document.getElementById('gmail-outlook-form');
     const otherEmailInfo = document.getElementById('other-email-info');
     const emailBodyTextarea = document.getElementById('email-body-textarea');
     const sendEmailBtn = document.getElementById('send-email-btn');
-
-    let currentContactPlatform = 'gmail'; // Default active platform
+    let currentContactPlatform = 'gmail';
 
     function updateContactForm() {
         contactButtons.forEach(btn => btn.classList.remove('active', 'bg-purple-600', 'text-white'));
         document.querySelector(`.contact-btn[data-platform="${currentContactPlatform}"]`).classList.add('active', 'bg-purple-600', 'text-white');
-
-        if (currentContactPlatform === 'gmail' || currentContactPlatform === 'outlook') {
-            gmailOutlookForm.classList.remove('hidden');
-            otherEmailInfo.classList.add('hidden');
-        } else {
-            gmailOutlookForm.classList.add('hidden');
-            otherEmailInfo.classList.remove('hidden');
-        }
+        gmailOutlookForm.classList.toggle('hidden', currentContactPlatform === 'other');
+        otherEmailInfo.classList.toggle('hidden', currentContactPlatform !== 'other');
     }
-
     contactButtons.forEach(button => {
         button.addEventListener('click', () => {
             currentContactPlatform = button.dataset.platform;
             updateContactForm();
         });
     });
-
     sendEmailBtn.addEventListener('click', () => {
         const subject = "פנייה בנושא לאתר שער הרפתקה";
         const recipient = "gate@rrpg.top";
         const body = emailBodyTextarea.value;
         let emailLink = '';
-
         if (currentContactPlatform === 'gmail') {
             emailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(recipient)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         } else if (currentContactPlatform === 'outlook') {
             emailLink = `https://outlook.live.com/mail/0/deeplink/compose?to=${encodeURIComponent(recipient)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        } else { // Fallback for 'other' or if something goes wrong
-            emailLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
         window.open(emailLink, '_blank');
     });
-
-    // Initialize the contact form on page load
     updateContactForm();
-
-    // Closest Event Logic
+    
+    // --- Closest Event Logic ---
     function getClosestEvent() {
         const now = new Date();
-        const currentMonth = now.getMonth() + 1; // getMonth() is 0-indexed
+        const currentMonth = now.getMonth() + 1;
         const currentYear = now.getFullYear();
-
-        const events = communityData.filter(item => item.type === 'event' && item.month !== 0);
-
+        const events = communityData.filter(item => item.type === 'event');
         let closestEvent = null;
         let minTimeDiff = Infinity;
-
-        events.forEach(event => {
+        
+        let futureEvents = events.filter(event => {
             let eventYear = currentYear;
-            // If the event month has already passed this year, consider it for next year
             if (event.month < currentMonth) {
                 eventYear++;
             }
-            
-            // Create a date object for the event (using day 1 for simplicity, as only month matters)
-            const eventDate = new Date(eventYear, event.month - 1, 1); // month is 0-indexed for Date constructor
-
-            const timeDiff = eventDate.getTime() - now.getTime();
-
-            // Ensure the event is in the future or current month
-            if (timeDiff >= 0 && timeDiff < minTimeDiff) {
-                minTimeDiff = timeDiff;
-                closestEvent = event;
-            }
+            return new Date(eventYear, event.month - 1, 1) >= now;
         });
 
-        // Fallback: If no future event found (e.g., all events for this year have passed),
-        // find the earliest event for next year.
-        if (!closestEvent && events.length > 0) { // Only fallback if there are events at all
-            minTimeDiff = Infinity;
-            events.forEach(event => {
-                const eventDate = new Date(currentYear + 1, event.month - 1, 1);
-                const timeDiff = eventDate.getTime() - now.getTime();
-                if (timeDiff < minTimeDiff) {
-                    minTimeDiff = timeDiff;
-                    closestEvent = event;
-                }
+        if (futureEvents.length > 0) {
+            futureEvents.sort((a, b) => {
+                 let aYear = a.month >= currentMonth ? currentYear : currentYear + 1;
+                 let bYear = b.month >= currentMonth ? currentYear : currentYear + 1;
+                 return new Date(aYear, a.month - 1, 1) - new Date(bYear, b.month - 1, 1);
             });
+            return futureEvents[0];
         }
-        return closestEvent;
+        
+        // Fallback if all events passed for this year
+        if (events.length > 0){
+             events.sort((a,b) => a.month - b.month);
+             return events[0];
+        }
+        
+        return null;
     }
 
     function renderClosestEvent() {
         const closest = getClosestEvent();
+        const closestEventContainer = document.getElementById('closest-event-container');
         if (closest) {
             const monthNames = ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"];
             const closestMonthName = monthNames[closest.month - 1];
             closestEventContainer.innerHTML = `
                 <a href="${closest.link}" target="_blank" rel="noopener noreferrer" class="card block bg-white p-6 rounded-lg shadow-lg border border-stone-200 hover:border-purple-400 text-center">
                     <h3 class="text-xl font-bold text-stone-800 mb-2">${closest.name}</h3>
-                    <p class="text-lg text-stone-600 mb-2">מתקיים בחודש: <span class="font-semibold text-purple-700">${closestMonthName}</span></p>
+                    <p class="text-lg text-stone-600 mb-2">מתקיים בדרך כלל בחודש: <span class="font-semibold text-purple-700">${closestMonthName}</span></p>
                     ${closest.location ? `<p class="text-base text-stone-600 mb-2">מיקום: ${closest.location}</p>` : ''}
                     <p class="text-base text-stone-600 mb-4">${closest.description}</p>
-                    <p class="text-base text-stone-500">לחצו לפרטים נוספים</p>
+                    <p class="text-base font-bold text-purple-600">לחצו לפרטים נוספים באתר הרשמי</p>
                 </a>
             `;
         } else {
             closestEventContainer.innerHTML = `<p class="text-base text-center text-stone-600">אין כנסים קרובים זמינים כרגע.</p>`;
         }
     }
-
     renderClosestEvent();
-
 });
 </script>
 </body>
